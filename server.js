@@ -9,9 +9,18 @@ nunjucks.configure({ noCache: true })
 app.set('view engine', 'html');
 app.engine('html', nunjucks.render);
 
+
+app.use((req, res, next) => {
+  res.locals.path = req.url
+  next();
+})
+
+app.use('/users', require('./routes/users'))
+
 app.use(require('body-parser').urlencoded());
 app.use(require('method-override')('_method'));
 app.use('/vendor', express.static(path.join(__dirname, 'node_modules')));
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`listening on port ${port}`));
