@@ -1,1 +1,25 @@
 {% extends './layout.html' %}
+
+{% block content %}
+
+<form action="/users/:name" method="POST">
+  <div class="form-group" style="padding-top:15px;">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" placeholder="Enter name for user"/>
+    <button style="margin-top:15px" class="btn btn-primary">Create User</button>
+  </div>
+</form>
+
+<ul class="list-group">
+  {% for user in users %}
+  <li class="list-group-item">{{user.name}}
+    <form action="/users" method="POST">
+      <div class="form-group">
+        <button class="btn btn-danger" style="margin-top:10px;">Delete</button>
+      </div>
+    </form>
+  </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
