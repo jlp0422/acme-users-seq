@@ -10,14 +10,20 @@ module.exports = app
 app.get('/', (req, res, next) => {
   User.findAll()
     .then(users => {res.render('users', {title: 'Users', users})})
-    .catch (err => next(err));
+    .catch (err => res.redirect('error'));
 })
 
-app.get('/:id', (req, res, next) => {
-  User.findById(req.params.id)
-    .then(user => { res.send(user) })
-    .catch(err => next(err));
-})
+// app.get('/:id', (req, res, next) => {
+//   User.findById(req.params.id)
+//     .then(user => { res.send(user) })
+//     .catch(err => next(err));
+// })
+
+app.post('/', (req, res, next) => {
+  User.create(req.body)
+    .then( user => res.redirect('/users'))
+    .catch( err => next(err));
+});
 
 app.delete('/:id', (req, res, next) => {
   User.findById(req.params.id)
@@ -26,10 +32,5 @@ app.delete('/:id', (req, res, next) => {
     .catch(err => next(err));
 })
 
-app.post('/:name', (req, res, next) => {
-  User.findById(req.params.id)
-    .then(user => user.destroy())
-    .then(() => res.redirect('/users'))
-    .catch(err => next(err));
-})
+
 

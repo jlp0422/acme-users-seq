@@ -26,11 +26,3 @@ module.exports = {
     User
   }
 }
-// _conn.sync({ force: true })
-//   .then(() => {
-
-//   })
-  // .then( users => {
-  //   return User.findAll({where: { name: 'moe'}})
-  // })
-  // .then( users => console.log(users[0].name))

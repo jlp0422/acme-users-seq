@@ -5,8 +5,9 @@ const app = express();
 const path = require('path');
 const nunjucks = require('nunjucks');
 const db = require('./db');
-app.use(require('body-parser').urlencoded());
 app.use(require('method-override')('_method'));
+app.use(require('body-parser').urlencoded());
+
 
 nunjucks.configure({ noCache: true })
 
@@ -20,7 +21,6 @@ app.use((req, res, next) => {
 
 app.use('/users', require('./routes/users'))
 
-
 app.use('/vendor', express.static(path.join(__dirname, 'node_modules')));
 
 
@@ -29,6 +29,10 @@ app.listen(port, () => console.log(`listening on port ${port}`));
 
 app.get('/', (req, res, next) => {
   res.render('index', {title: 'Home'});
+})
+
+app.get('/error', (req, res, next) => {
+  res.render('error', { title: 'Error' });
 })
 
 db.sync()
