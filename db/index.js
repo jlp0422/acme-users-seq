@@ -2,7 +2,7 @@
 
 const Sequelize = require('sequelize');
 const _conn = new Sequelize(process.env.DATABASE_URL, {
-  dialect: 'postgres'
+  "dialect": "postgres"
 });
 
 const User = _conn.define('user', {
