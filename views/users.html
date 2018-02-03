@@ -10,13 +10,15 @@
 
 <ul class="list-group">
   {% for user in users %}
-  <li class="list-group-item">{{user.name}}
-    <form action="/users/{{user.id}}?_method=DELETE" method="POST">
-      <div class="form-group">
-        <button class="btn btn-danger" style="margin-top:10px;">Delete</button>
-      </div>
-    </form>
-  </li>
+  <a href="/users/{{user.name}}">
+    <li class="list-group-item">{{user.name}}
+      <form action="/users/{{user.id}}?_method=DELETE" method="POST">
+        <div class="form-group">
+          <button class="btn btn-danger" style="margin-top:10px;">Delete</button>
+        </div>
+      </form>
+    </li>
+  </a>
   {% endfor %}
 </ul>
 

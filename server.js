@@ -22,6 +22,7 @@ app.use((req, res, next) => {
 app.use('/users', require('./routes/users'))
 
 app.use('/vendor', express.static(path.join(__dirname, 'node_modules')));
+app.use('/vendor', express.static(path.join(__dirname, 'images')));
 
 
 const port = process.env.PORT || 3000;
@@ -32,6 +33,7 @@ app.get('/', (req, res, next) => {
 })
 
 app.get('/error', (req, res, next) => {
+  // res.status(404);
   res.render('error', { title: 'Error' });
 })
 

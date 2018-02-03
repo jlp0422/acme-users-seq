@@ -13,11 +13,16 @@ app.get('/', (req, res, next) => {
     .catch (err => res.redirect('error'));
 })
 
-// app.get('/:id', (req, res, next) => {
-//   User.findById(req.params.id)
-//     .then(user => { res.send(user) })
-//     .catch(err => next(err));
-// })
+
+app.get('/:name', (req, res, next) => {
+  User.findOne({
+    where: {
+      name: req.params.name
+    }
+  })
+  .then(user => { res.render('user', { title: user.name, user }) })
+  .catch(err => next(err))
+})
 
 app.post('/', (req, res, next) => {
   User.create(req.body)
@@ -31,6 +36,3 @@ app.delete('/:id', (req, res, next) => {
     .then( () => res.redirect('/users'))
     .catch(err => next(err));
 })
-
-
-

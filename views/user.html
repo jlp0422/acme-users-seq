@@ -1,0 +1,22 @@
+{% extends './layout.html' %}
+
+{% block content %}
+
+
+<div class="jumbotron">
+  <h2>{{user.name}}</h2>
+  <ul>
+    <li>
+      Lives in a{{user.residence}}
+    </li>
+    <li>
+      Fun Fact: {{user.funFact}}
+      <img src="{{user.image}}" alt=""/>
+    </li>
+  </ul>
+</div>
+
+<a href="/users">
+  <p>Back to all users</p>
+</a>
+{% endblock %}
