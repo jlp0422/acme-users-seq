@@ -20,7 +20,7 @@ app.get('/:name', (req, res, next) => {
       name: req.params.name
     }
   })
-  .then(user => { res.render('user', { title: user.name, user }) })
+  .then(user => { res.render('user', { title: `Page for: ${user.name}`, user }) })
   .catch(err => next(err))
 })
 
