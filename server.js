@@ -34,7 +34,7 @@ app.get('/', (req, res, next) => {
 
 app.get('/error', (req, res, next) => {
   // res.status(404);
-  res.render('error', { title: 'Error' });
+  res.render('error', { title: 'ERROR' });
 })
 
 db.sync()

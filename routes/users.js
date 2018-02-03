@@ -9,7 +9,7 @@ module.exports = app
 
 app.get('/', (req, res, next) => {
   User.findAll()
-    .then(users => {res.render('users', {title: 'Users', users})})
+    .then(users => {res.render('users', {title: 'Creatures', users})})
     .catch (err => res.redirect('error'));
 })
 
