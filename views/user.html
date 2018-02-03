@@ -2,18 +2,19 @@
 
 {% block content %}
 
-
 <div class="jumbotron">
   <h2>{{user.name}}</h2>
   <ul>
     <li>
-      Lives in a{{user.residence}}
+      Residence: {{user.residence}}
     </li>
     <li>
       Fun Fact: {{user.funFact}}
-      <img src="{{user.image}}" alt=""/>
     </li>
   </ul>
+
+  <img src="{{user.image}}" alt="{{user.name}}" />
+
 </div>
 
 <a href="/users">

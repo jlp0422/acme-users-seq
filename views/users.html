@@ -1,17 +1,31 @@
 {% extends './layout.html' %} {% block content %}
 
-<form action="/users" method="POST">
-  <div class="form-group" style="padding-top:15px;">
-    <label>Username</label>
-    <input name="name" type="text" class="form-control" placeholder="Enter name for user" />
-    <button style="margin-top:15px" class="btn btn-primary">Create User</button>
+<form action="/users" method="POST" style="margin-bottom:15px;">
+  <div class="form-row" style="margin-top:10px;">
+    <div class="form-group col-md-6">
+      <label style="font-weight:bold;">Name</label>
+      <input name="name" type="text" class="form-control" placeholder="Creature Name">
+    </div>
+    <div class="form-group col-md-6">
+      <label style="font-weight:bold;">Type of residence</label>
+      <input type="text" name="residence" class="form-control" placeholder="Residence">
+    </div>
   </div>
+  <div class="form-group">
+    <label style="font-weight:bold;">Fun Fact</label>
+    <input type="text" class="form-control" name="funFact" placeholder="Fun fact">
+  </div>
+  <div class="form-group">
+    <label style="font-weight:bold;">Image</label>
+    <input type="text" class="form-control" name="image" placeholder="Link to an image of the creature">
+  </div>
+  <button class="btn btn-primary">Create creature</button>
 </form>
 
 <ul class="list-group">
   {% for user in users %}
-  <a href="/users/{{user.name}}">
-    <li class="list-group-item">{{user.name}}
+    <li class="list-group-item">
+      <a href="/users/{{user.name}}">{{user.name}}</a>
       <form action="/users/{{user.id}}?_method=DELETE" method="POST">
         <div class="form-group">
           <button class="btn btn-danger" style="margin-top:10px;">Delete</button>
