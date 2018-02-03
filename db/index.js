@@ -1,9 +1,7 @@
 /* eslint-disable */
 
 const Sequelize = require('sequelize');
-const _conn = new Sequelize(process.env.DATABASE_URL, {
-  "dialect": "postgres"
-});
+const _conn = new Sequelize(process.env.DATABASE_URL);
 
 const User = _conn.define('user', {
   name: Sequelize.STRING
