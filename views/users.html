@@ -26,7 +26,7 @@
 
 <ul class="list-group">
   {% for user in users %}
-    <li class="list-group-item">
+    <li class="list-group-item" style="font-size: 18px;">
       <a href="/users/{{user.name}}">{{user.name}}</a>
       <form action="/users/{{user.id}}?_method=DELETE" method="POST">
         <div class="form-group">

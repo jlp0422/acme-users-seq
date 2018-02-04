@@ -32,9 +32,10 @@ app.get('/', (req, res, next) => {
   res.render('index', {title: 'Home'});
 })
 
-app.get('/error', (req, res, next) => {
-  // res.status(404);
-  res.render('error', { title: 'ERROR' });
+app.get('/:slash', (req, res, next) => {
+  if (req.params.slash !== 'users') {
+    res.render('error', { title: 'ERROR' });
+  }
 })
 
 db.sync()
