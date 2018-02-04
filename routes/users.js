@@ -10,7 +10,7 @@ module.exports = app
 app.get('/', (req, res, next) => {
   User.findAll()
     .then(users => {res.render('users', {title: 'Creatures', users})})
-    .catch (err => res.redirect('error'));
+    .catch (err => res.status(404).render('error'));
 })
 
 
@@ -21,18 +21,18 @@ app.get('/:name', (req, res, next) => {
     }
   })
   .then(user => { res.render('user', { title: `Page for: ${user.name}`, user }) })
-  .catch(err => next(err))
+    .catch(err => res.status(404).render('error'));
 })
 
 app.post('/', (req, res, next) => {
   User.create(req.body)
     .then( user => res.redirect('/users'))
-    .catch( err => next(err));
+    .catch(err => res.status(404).render('error'));
 });
 
 app.delete('/:id', (req, res, next) => {
   User.findById(req.params.id)
     .then(user => user.destroy())
     .then( () => res.redirect('/users'))
-    .catch(err => next(err));
+    .catch(err => res.status(404).render('error'));
 })
