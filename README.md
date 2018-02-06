@@ -2,4 +2,4 @@
 
 ### Using Express and Sequelize
 
-#### Full link at [https://rocky-spire-42200.herokuapp.com/]
+#### Full link at [https://acme-sequelize-spongebob.herokuapp.com/]
